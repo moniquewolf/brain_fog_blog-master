@@ -1,0 +1,24 @@
+<h1>Posts#show</h1>
+Title: <%= @post.title %><br />
+Content: <%= @post.post_text %>
+
+<!-- This is like putting a comments#index right here inside of post#show!!! -->
+<%= @post.comments.each do |c| %>
+	<hr />
+	<%= c.user.email %> said:<br />
+	<%= c.comment_text %>
+<% end %>
+
+<hr />
+
+<!-- This is like having comments#new right here inside of posts#show -->
+<%= form_for @comment do |f| %>
+	<%= f.text_field :comment_text %><br />
+	<%= f.text_field :post_id, @post.id %>
+	<%= f.submit %>
+<% end %>
+
+
+
+
+
